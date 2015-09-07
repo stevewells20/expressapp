@@ -5,3 +5,5 @@ html
 		link(rel='stylesheet', href='/stylesheets/style.css')
 	body
 		block content
+			canvas(id="animation", resize="true")
+			script(type="text/javascript", src="percolation_server.js", canvas="animation")
