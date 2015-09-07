@@ -1,8 +1,51 @@
 extends layout
 
-block content
-	h1(id="title") Welcome to Jade
+//block content
+//	h1(id="title") Welcome to Jade
 //	button(class="btn", data-action="bea").
 //		Be Awesome
-	canvas(id="animation", width="600" height="600")
-	script(type="text/javascript", src="/percolation_server.js", canvas="animation")
+//	canvas(id="animation", width="600" height="600")
+//	script(type="text/javascript", src="/percolation_server.js", canvas="animation")
+	
+
+html
+	head
+		meta(charset='utf-8')
+		|		 
+		title Michael Toth - Percolation
+		|		 
+		link(rel='stylesheet', href='percolation.css')
+		|		 
+		script(type='text/javascript', src='percolation.js')
+		// This lets me clear the interval to avoid duplicate runs on refresh"
+		script.
+			var interval = null;
+	body
+		#page-wrap
+			.header
+				#header-text
+					h1 Percolation Visualization
+			|				 
+			|				 
+			form#inputs
+				| Grid Size (N-by-N grid) : 
+				input#gridSize(type='text', value='20')
+				br
+				|						 Speed : 
+				input(type='radio', name='speed', value='instant')
+				| Instant
+				|						 
+				input(type='radio', name='speed', value='fast', checked='')
+				| Fast
+				|						 
+				input(type='radio', name='speed', value='slow')
+				| Slow
+				br
+				// without type='button', the page refreshes on click, which doesn't work
+				button#button(type='button', onclick='return simulatePercolation()') Run Simulation
+			|				 
+			canvas#animation(width='600', height='600')
+				| Percolation Visualization (include img)
+			|				 
+			|				 
+			p#percolates
