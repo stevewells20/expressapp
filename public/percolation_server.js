@@ -1,6 +1,74 @@
 
 var Percolate = {
 
+    // Percolation system.  Grid begins closed with functions to open sites and check status
+    Percolation: function(N) {      
+        // Constructor
+        var size = N;
+        var uf = new WeightedQuickUnionUF(N * N + 2);
+        var topUF = new WeightedQuickUnionUF(N * N + 2);
+        var opened = [];
+        for (var i = 0; i < N * N; i++) {
+            opened[i] = false;
+        }
+
+        // Helper function to convert 2 digit references to 1 digit
+        function xyTo1D(i, j) {
+            return size * (i - 1) + j;
+        }
+
+        // Open a new site in the grid
+        this.open = function(i, j) {
+            // Mark open in boolean array:
+            opened[xyTo1D(i, j)] = true;
+            
+            // Connect with open neighbors:
+            if (i != 1 && this.isOpen(i - 1, j)) {
+                uf.union(xyTo1D(i, j), xyTo1D(i - 1, j));
+                topUF.union(xyTo1D(i, j), xyTo1D(i - 1, j));
+            }
+            if (i != size && this.isOpen(i + 1, j)) {
+                uf.union(xyTo1D(i, j), xyTo1D(i + 1, j));
+                topUF.union(xyTo1D(i, j), xyTo1D(i + 1, j));
+            }
+            if (j != 1 && this.isOpen(i, j - 1)) {
+                uf.union(xyTo1D(i, j), xyTo1D(i, j - 1));
+                topUF.union(xyTo1D(i, j), xyTo1D(i, j - 1));
+            }
+            if (j != size && this.isOpen(i, j + 1)) {
+                uf.union(xyTo1D(i, j), xyTo1D(i, j + 1));
+                topUF.union(xyTo1D(i, j), xyTo1D(i, j + 1));
+            }
+
+            // If in top or bottom row, connect to virtual sites:
+            if (i === 1) {
+                uf.union(xyTo1D(i, j), 0);
+                topUF.union(xyTo1D(i, j), 0);
+            }
+            if (i === size) {
+                // Don't connect topUF.  Prevents backwash problem
+                uf.union(xyTo1D(i, j), size * size + 1);
+            }
+
+
+        }
+        
+        this.isOpen = function(i, j) {
+            return opened[xyTo1D(i, j)];
+        }
+
+        // A site is full if a path exists from it to the top
+        this.isFull = function(i, j) {
+            return topUF.connected(xyTo1D(i, j), 0);
+        }
+
+        // System percolates if top and bottom virtual sites are connected
+        this.percolates = function() {
+            return uf.connected(0, size * size + 1);
+            return 0;
+        }
+    },
+
     // Draw grid to canvas.  Called repeatedly from simulatePercolation.
     draw: function(N,perc) { 
         var canvas = document.getElementById('animation');
@@ -109,73 +177,6 @@ var Percolate = {
         }
     },
 
-    // Percolation system.  Grid begins closed with functions to open sites and check status
-    Percolation: function(N) {
-        // Constructor
-        var size = N;
-        var uf = new WeightedQuickUnionUF(N * N + 2);
-        var topUF = new WeightedQuickUnionUF(N * N + 2);
-        var opened = [];
-        for (var i = 0; i < N * N; i++) {
-            opened[i] = false;
-        }
-
-        // Helper function to convert 2 digit references to 1 digit
-        function xyTo1D(i, j) {
-            return size * (i - 1) + j;
-        }
-
-        // Open a new site in the grid
-        this.open = function(i, j) {
-            // Mark open in boolean array:
-            opened[xyTo1D(i, j)] = true;
-            
-            // Connect with open neighbors:
-            if (i != 1 && this.isOpen(i - 1, j)) {
-                uf.union(xyTo1D(i, j), xyTo1D(i - 1, j));
-                topUF.union(xyTo1D(i, j), xyTo1D(i - 1, j));
-            }
-            if (i != size && this.isOpen(i + 1, j)) {
-                uf.union(xyTo1D(i, j), xyTo1D(i + 1, j));
-                topUF.union(xyTo1D(i, j), xyTo1D(i + 1, j));
-            }
-            if (j != 1 && this.isOpen(i, j - 1)) {
-                uf.union(xyTo1D(i, j), xyTo1D(i, j - 1));
-                topUF.union(xyTo1D(i, j), xyTo1D(i, j - 1));
-            }
-            if (j != size && this.isOpen(i, j + 1)) {
-                uf.union(xyTo1D(i, j), xyTo1D(i, j + 1));
-                topUF.union(xyTo1D(i, j), xyTo1D(i, j + 1));
-            }
-
-            // If in top or bottom row, connect to virtual sites:
-            if (i === 1) {
-                uf.union(xyTo1D(i, j), 0);
-                topUF.union(xyTo1D(i, j), 0);
-            }
-            if (i === size) {
-                // Don't connect topUF.  Prevents backwash problem
-                uf.union(xyTo1D(i, j), size * size + 1);
-            }
-
-
-        }
-        
-        this.isOpen = function(i, j) {
-            return opened[xyTo1D(i, j)];
-        }
-
-        // A site is full if a path exists from it to the top
-        this.isFull = function(i, j) {
-            return topUF.connected(xyTo1D(i, j), 0);
-        }
-
-        // System percolates if top and bottom virtual sites are connected
-        this.percolates = function() {
-            return uf.connected(0, size * size + 1);
-            return 0;
-        }
-    },
 
     // Union find implementation for efficient checking of percolation
     WeightedQuickUnionUF: function(N) {
