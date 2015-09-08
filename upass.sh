@@ -3,6 +3,7 @@
 #spawn git commit -m "Added d3 to modules" 
 spawn git push origin testing
 expect "'https://github.com': "
+sleep 1
 send "stevewells20\n"
 expect "'https://stevewells20@github.com': "
 sleep 1
