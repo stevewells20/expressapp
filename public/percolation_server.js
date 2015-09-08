@@ -1,4 +1,5 @@
 var Percolate = {
+
     draw: function(N,perc) {
         var canvas = document.getElementById('animation');
         var ctx = canvas.getContext('2d');
