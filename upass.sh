@@ -9,4 +9,5 @@ expect "'https://stevewells20@github.com': "
 sleep 1
 send "1qazXSW@\n\n"
 sleep 2
+expect eof;
 
