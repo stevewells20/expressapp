@@ -110,7 +110,7 @@ var Percolate = {
     },
 
     // Percolation system.  Grid begins closed with functions to open sites and check status
-    percolation: function(N) {
+    Percolation: function(N) {
         // Constructor
         var size = N;
         var uf = new WeightedQuickUnionUF(N * N + 2);
