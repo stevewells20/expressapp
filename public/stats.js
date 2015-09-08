@@ -1,4 +1,5 @@
 var PouchDB = require('../node_modules/pouchdb');
+
 PouchDB.plugin(require('pouchdb-upsert'));
 
 //establish remote db
