@@ -10,8 +10,12 @@ var users = require('./routes/users');
 
 var app = express();
 
+//added to support req.ip
+app.enable('trust proxy'); 
+
 //added for fun
 app.get('/blocks', function (req,res) {
+  console.log('!!!! CLIENT IP ADDR: '+req.ip);
   var blocks = ['Fixed','Moveable','Rotating'];
   res.json(blocks);
   //res.redirect(301, '/parts');
