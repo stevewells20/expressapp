@@ -1,10 +1,5 @@
-
 var Percolate = {
-
-
-
-    // Draw grid to canvas.  Called repeatedly from simulatePercolation.
-    draw: function(N,perc) { 
+    draw: function(N,perc) {
         var canvas = document.getElementById('animation');
         var ctx = canvas.getContext('2d');
         var canvasSize = canvas.width; // = height because square canvas assumed
@@ -37,7 +32,7 @@ var Percolate = {
     },
 
     // Main function.  Open sites randomly until percolation, calling draw with each open.
-    simulate: function() {
+    simulatePercolation: function() {
         // Remove output from last run if it exists
         document.getElementById("percolates").innerHTML = "";
         clearInterval(interval);
@@ -55,8 +50,8 @@ var Percolate = {
         }
 
         // Creating instances of "classes"
-        var perc = new this.Percolation(N);
-        var drawPerc = new this.draw(N,perc);
+        var perc = new Percolate.Percolation(N);
+        var drawPerc = new Percolate.draw(N,perc);
         var count = 0; // Should output to screen when simulation is finished
 
         // Open a site uniformly at random within the grid
@@ -111,13 +106,12 @@ var Percolate = {
         }
     },
 
-
     // Percolation system.  Grid begins closed with functions to open sites and check status
-    Percolation: function(N) {      
+    Percolation: function(N) {
         // Constructor
         var size = N;
-        var uf = new this.WeightedQuickUnionUF(N * N + 2);
-        var topUF = new this.WeightedQuickUnionUF(N * N + 2);
+        var uf = new Percolate.WeightedQuickUnionUF(N * N + 2);
+        var topUF = new Percolate.WeightedQuickUnionUF(N * N + 2);
         var opened = [];
         for (var i = 0; i < N * N; i++) {
             opened[i] = false;
@@ -221,5 +215,13 @@ var Percolate = {
             }
             this.count--;
         }
-    }, 
+    },
+
 };
+
+
+    
+
+
+
+    
