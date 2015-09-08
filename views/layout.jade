@@ -2,6 +2,7 @@ doctype html
 html
 	head
 		title
+		script(type='text/javascript', src='/percolation_server.js')
 		link(rel='stylesheet', href='/stylesheets/style.css')
 		// This lets me clear the interval to avoid duplicate runs on refresh"
 		script.
@@ -30,5 +31,4 @@ html
 		|				 
 		p#percolates
 		block content
-			script(type='text/javascript', src='/percolation_server.js')
 
