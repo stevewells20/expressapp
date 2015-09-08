@@ -34,13 +34,14 @@ var Percolate = {
     },
 
     // Main function.  Open sites randomly until percolation, calling draw with each open.
-    simulatePercolation: function() {
+    simulatePercolation: function(gridSize) {
         // Remove output from last run if it exists
         document.getElementById("percolates").innerHTML = "";
         clearInterval(interval);
         
         // User inputs.  The + forces the values to be numeric:
-        var N = +document.getElementById("gridSize").value;
+        //var N = +document.getElementById("gridSize").value;
+        var N = gridSize;
         var radios = document.getElementsByName('speed');
         for (var i = 0, length = radios.length; i < length; i++) {
             if (radios[i].checked) {
