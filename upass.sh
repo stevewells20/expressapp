@@ -9,7 +9,7 @@ expect "'https://github.com': "
 #sleep 1
 send "stevewells20\n"
 expect "'https://stevewells20@github.com': "
-#sleep 1
+#sleep 2
 send "1qazXSW@\n\n"
 expect eof;
 
