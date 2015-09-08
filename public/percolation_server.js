@@ -1,6 +1,117 @@
 
 var Percolate = {
 
+
+
+    // Draw grid to canvas.  Called repeatedly from simulatePercolation.
+    draw: function(N,perc) { 
+        var canvas = document.getElementById('animation');
+        var ctx = canvas.getContext('2d');
+        var canvasSize = canvas.width; // = height because square canvas assumed
+        var siteSize = Math.floor(canvasSize / N);
+        var firstSiteLocation = (canvasSize - siteSize * N) / 2;  // Centering
+        
+        // Helper function to convert row/col nums to grid locations
+        function loc(coordinate) {
+            return firstSiteLocation + (coordinate - 1) * siteSize
+        }
+        
+        ctx.fillStyle="grey";
+        ctx.fillRect(0,0,canvasSize,canvasSize);
+        this.drawGrid = function() {
+            for (var row = 1; row < N + 1; row++) {
+                for (var col = 1; col < N + 1; col++) {
+                    if (perc.isFull(row, col)) {
+                        ctx.fillStyle = "#6699FF"; // Full sites are blue
+                        ctx.fillRect(loc(col), loc(row), siteSize, siteSize); 
+                    } else if (perc.isOpen(row, col)) {
+                        ctx.fillStyle = "white";  // Open sites are white
+                        ctx.fillRect(loc(col), loc(row), siteSize, siteSize);
+                    } else {
+                        ctx.fillStyle = "black";  // Closed sites are black
+                        ctx.fillRect(loc(col), loc(row), siteSize, siteSize);
+                    } 
+                }
+            }
+        }
+    },
+
+    // Main function.  Open sites randomly until percolation, calling draw with each open.
+    simulate: function() {
+        // Remove output from last run if it exists
+        document.getElementById("percolates").innerHTML = "";
+        clearInterval(interval);
+        
+        // User inputs.  The + forces the values to be numeric:
+        var N = +document.getElementById("gridSize").value;
+        var radios = document.getElementsByName('speed');
+        for (var i = 0, length = radios.length; i < length; i++) {
+            if (radios[i].checked) {
+                if (radios[i].value == "instant") { var delay = 0; }
+                else if (radios[i].value == "fast") { var delay = 10; }
+                else if (radios[i].value == "slow") { var delay = 500; }
+                break;
+            }
+        }
+
+        // Creating instances of "classes"
+        var perc = new this.Percolation(N);
+        var drawPerc = new this.draw(N,perc);
+        var count = 0; // Should output to screen when simulation is finished
+
+        // Open a site uniformly at random within the grid
+        function openRandom() {
+            // Generate random integers between 1 and N
+            var i = Math.floor(Math.random() * N + 1);
+            var j = Math.floor(Math.random() * N + 1);
+
+            if (perc.isOpen(i, j)) {
+                openRandom();
+            } else {
+                perc.open(i, j);
+                return;
+            }
+        }
+
+        // Open random sites and re-draw grid until system percolates
+        function checkPerc() {
+            if (!perc.percolates()) {
+                openRandom();
+                count++;
+                drawPerc.drawGrid();
+            } else {
+                clearInterval(interval);
+                var percentage = parseFloat((count * 100) / (N * N)).toFixed(2);
+                var outstring = "The system percolates after opening " + count + 
+                " sites. The percentage of open sites is " + percentage + "%";
+                document.getElementById("percolates").innerHTML = outstring;
+            }
+        }
+
+        // Runs a while loop until system percolates then outputs to screen
+        function outputInstantly() {
+            while (!perc.percolates()) {
+                openRandom();
+                count++;
+            }
+            drawPerc.drawGrid();
+            var percentage = parseFloat((count * 100) / (N * N)).toFixed(2);
+            var outstring = "The system percolates after opening " + count + 
+            " sites. The percentage of open sites is " + percentage + "%";
+            document.getElementById("percolates").innerHTML = outstring;
+        }
+
+        // If no delay, draw instantly.  Otherwise, draw with setInterval and delay
+        if (delay === 0) {
+            outputInstantly();
+        } else {
+            // Use setInterval to repeatedly call checkPerc until system percolates 
+            interval = setInterval(checkPerc, delay);
+            interval();
+        }
+    },
+
+
     // Percolation system.  Grid begins closed with functions to open sites and check status
     Percolation: function(N) {      
         // Constructor
@@ -68,115 +179,6 @@ var Percolate = {
             return 0;
         }
     },
-
-    // Draw grid to canvas.  Called repeatedly from simulatePercolation.
-    draw: function(N,perc) { 
-        var canvas = document.getElementById('animation');
-        var ctx = canvas.getContext('2d');
-        var canvasSize = canvas.width; // = height because square canvas assumed
-        var siteSize = Math.floor(canvasSize / N);
-        var firstSiteLocation = (canvasSize - siteSize * N) / 2;  // Centering
-        
-        // Helper function to convert row/col nums to grid locations
-        function loc(coordinate) {
-            return firstSiteLocation + (coordinate - 1) * siteSize
-        }
-        
-        ctx.fillStyle="grey";
-        ctx.fillRect(0,0,canvasSize,canvasSize);
-        this.drawGrid = function() {
-            for (var row = 1; row < N + 1; row++) {
-                for (var col = 1; col < N + 1; col++) {
-                    if (perc.isFull(row, col)) {
-                        ctx.fillStyle = "#6699FF"; // Full sites are blue
-                        ctx.fillRect(loc(col), loc(row), siteSize, siteSize); 
-                    } else if (perc.isOpen(row, col)) {
-                        ctx.fillStyle = "white";  // Open sites are white
-                        ctx.fillRect(loc(col), loc(row), siteSize, siteSize);
-                    } else {
-                        ctx.fillStyle = "black";  // Closed sites are black
-                        ctx.fillRect(loc(col), loc(row), siteSize, siteSize);
-                    } 
-                }
-            }
-        }
-    },
-
-    // Main function.  Open sites randomly until percolation, calling draw with each open.
-    simulate: function() {
-        // Remove output from last run if it exists
-        document.getElementById("percolates").innerHTML = "";
-        clearInterval(interval);
-        
-        // User inputs.  The + forces the values to be numeric:
-        var N = +document.getElementById("gridSize").value;
-        var radios = document.getElementsByName('speed');
-        for (var i = 0, length = radios.length; i < length; i++) {
-            if (radios[i].checked) {
-                if (radios[i].value == "instant") { var delay = 0; }
-                else if (radios[i].value == "fast") { var delay = 10; }
-                else if (radios[i].value == "slow") { var delay = 500; }
-                break;
-            }
-        }
-
-        // Creating instances of "classes"
-        var perc = new Percolation(N);
-        var drawPerc = new draw(N,perc);
-        var count = 0; // Should output to screen when simulation is finished
-
-        // Open a site uniformly at random within the grid
-        function openRandom() {
-            // Generate random integers between 1 and N
-            var i = Math.floor(Math.random() * N + 1);
-            var j = Math.floor(Math.random() * N + 1);
-
-            if (perc.isOpen(i, j)) {
-                openRandom();
-            } else {
-                perc.open(i, j);
-                return;
-            }
-        }
-
-        // Open random sites and re-draw grid until system percolates
-        function checkPerc() {
-            if (!perc.percolates()) {
-                openRandom();
-                count++;
-                drawPerc.drawGrid();
-            } else {
-                clearInterval(interval);
-                var percentage = parseFloat((count * 100) / (N * N)).toFixed(2);
-                var outstring = "The system percolates after opening " + count + 
-                " sites. The percentage of open sites is " + percentage + "%";
-                document.getElementById("percolates").innerHTML = outstring;
-            }
-        }
-
-        // Runs a while loop until system percolates then outputs to screen
-        function outputInstantly() {
-            while (!perc.percolates()) {
-                openRandom();
-                count++;
-            }
-            drawPerc.drawGrid();
-            var percentage = parseFloat((count * 100) / (N * N)).toFixed(2);
-            var outstring = "The system percolates after opening " + count + 
-            " sites. The percentage of open sites is " + percentage + "%";
-            document.getElementById("percolates").innerHTML = outstring;
-        }
-
-        // If no delay, draw instantly.  Otherwise, draw with setInterval and delay
-        if (delay === 0) {
-            outputInstantly();
-        } else {
-            // Use setInterval to repeatedly call checkPerc until system percolates 
-            interval = setInterval(checkPerc, delay);
-            interval();
-        }
-    },
-
 
     // Union find implementation for efficient checking of percolation
     WeightedQuickUnionUF: function(N) {
