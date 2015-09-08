@@ -116,8 +116,8 @@ var Percolate = {
     Percolation: function(N) {      
         // Constructor
         var size = N;
-        var uf = new WeightedQuickUnionUF(N * N + 2);
-        var topUF = new WeightedQuickUnionUF(N * N + 2);
+        var uf = new this.WeightedQuickUnionUF(N * N + 2);
+        var topUF = new this.WeightedQuickUnionUF(N * N + 2);
         var opened = [];
         for (var i = 0; i < N * N; i++) {
             opened[i] = false;
