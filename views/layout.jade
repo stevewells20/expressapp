@@ -4,32 +4,34 @@ html
 		title
 		script(src='/percolation_server.js', type='text/javascript')
 		link(rel='stylesheet', href='/stylesheets/style.css')
+
+
 		// This lets me clear the interval to avoid duplicate runs on refresh"
 		script.
 			var interval = null;
 	body
-
-		form#inputs
-			| Grid Size (N-by-N grid) : 
-			input#gridSize(type='text', value='20')
+		#page-wrap
+			.header
+				#header-text
+					h1 Percolation Visualization
+				#link-home
+					p Created by
+					a(href='http://www.michaeltoth.net') Michael Toth
+			form#inputs
+				| Grid Size (N-by-N grid) : 
+				input#gridSize(type='text', value='20')
+				br
+				|						 Speed : 
+				input(type='radio', name='speed', value='instant')
+				| Instant
+				input(type='radio', name='speed', value='fast', checked='')
+				| Fast
+				input(type='radio', name='speed', value='slow')
+				| Slow
+				br
+				// without type='button', the page refreshes on click, which doesn't work
+				button#button(type='button', onclick='return simulatePercolation()') Run Simulation
+			canvas#animation(width='600', height='600')
+				| Percolation Visualization (include img)
+			p#percolates
 			br
-			|						 Speed : 
-			input(type='radio', name='speed', value='instant')
-			| Instant
-			|						 
-			input(type='radio', name='speed', value='fast', checked='')
-			| Fast
-			|						 
-			input(type='radio', name='speed', value='slow')
-			| Slow
-			br
-			// without type='button', the page refreshes on click, which doesn't work
-			button#button(type='button', onclick='return simulatePercolation()') Run Simulation
-			|				 
-			div(id="animation", style="width:100%; height:700px;")
-			| Percolation Visualization (include img)
-		|				 
-		|				 
-		p#percolates
-		block content
-
