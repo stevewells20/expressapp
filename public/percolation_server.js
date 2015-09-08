@@ -102,7 +102,7 @@ var Percolate = {
         } else {
             // Use setInterval to repeatedly call checkPerc until system percolates 
             interval = setInterval(checkPerc, delay);
-            interval();
+            //interval();
         }
     },
 
