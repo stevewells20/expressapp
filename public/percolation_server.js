@@ -17,6 +17,7 @@ var Percolate = {
         this.drawGrid = function() {
             for (var row = 1; row < N + 1; row++) {
                 for (var col = 1; col < N + 1; col++) {
+                    //switch?
                     if (perc.isFull(row, col)) {
                         ctx.fillStyle = "#6699FF"; // Full sites are blue
                         ctx.fillRect(loc(col), loc(row), siteSize, siteSize); 
