@@ -1,5 +1,5 @@
 #!/usr/bin/expect -f
-set timeout 20;
+set timeout 9999;
 spawn git add --all .
 expect eof; 
 spawn git commit -m "Added d3 to modules" 
