@@ -14,12 +14,11 @@ var app = express();
 app.enable('trust proxy'); 
 
 //added for fun
-app.get('/blocks', function (req,res) {
-  console.log('!!!! CLIENT IP ADDR: '+req.ip);
-  var blocks = ['Fixed','Moveable','Rotating'];
-  res.json(blocks);
-  //res.redirect(301, '/parts');
-});
+// app.get('/blocks', function (req,res) {
+//   var blocks = ['Fixed','Moveable','Rotating'];
+//   res.json(blocks);
+//   //res.redirect(301, '/parts');
+// });
 
 
 
