@@ -71,6 +71,29 @@ var Percolate = {
             }
         }
 
+        function syncDB(N,count,percentage){
+            var doc = {
+                "_id": "s"+Date.now(),
+                "N": N,
+                "count": count,
+                "percentage": percentage,
+                };
+
+            localDB.put(doc);
+
+            // localDB.upsert('stats', myDeltaFunction).then(function () {
+            //     console.log('Success! \n\t'+doc._id+' was N-SYNCed')
+            // }).catch(function (err) {
+            //     if (err.status === 409) {
+            //         console.log('Conflict in upsert: 409')}
+            //     else {
+            //         console.log('Some other error! \n\t'+err)
+            //     }
+            // });
+            //
+            //}
+        }
+
         // Open random sites and re-draw grid until system percolates
         function checkPerc() {
             if (!perc.percolates()) {
@@ -83,28 +106,7 @@ var Percolate = {
                 var outstring = "The system percolates after opening " + count + 
                 " sites. The percentage of open sites is " + percentage + "%";
                 document.getElementById("percolates").innerHTML = outstring;
-                //
-                var doc = {
-                    "_id": "s"+Date.now(),
-                    "N": N,
-                    "count": count,
-                    "percentage": percentage,
-                };
-
-                localDB.put(doc);
-
-
-                // localDB.upsert('stats', myDeltaFunction).then(function () {
-                //     console.log('Success! \n\t'+doc._id+' was N-SYNCed')
-                // }).catch(function (err) {
-                //     if (err.status === 409) {
-                //         console.log('Conflict in upsert: 409')}
-                //     else {
-                //         console.log('Some other error! \n\t'+err)
-                //     }
-                // });
-                //
-            }
+                syncDB(N,count,percentage);//
         }
 
         // Runs a while loop until system percolates then outputs to screen
@@ -118,6 +120,7 @@ var Percolate = {
             var outstring = "The system percolates after opening " + count + 
             " sites. The percentage of open sites is " + percentage + "%";
             document.getElementById("percolates").innerHTML = outstring;
+            syncDB(N,count,percentage)//
         }
 
         // If no delay, draw instantly.  Otherwise, draw with setInterval and delay
