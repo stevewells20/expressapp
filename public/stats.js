@@ -22,6 +22,17 @@ function myDeltaFunction(doc) {
 	return doc;
 }
 
+function averageDB(type){
+	var result = 0;	
+	var docObs = localDB.allDocs(function(err,res){
+		if (err) console.log("Error in obtaining localDB.allDocs:\n\t" +err)
+		});
+	docObs.forEach(function(type){
+		result += rows[type];
+	})
+	result = result / docObs.total_rows;
+}
+
 // Set live sync between dbs
 localDB.sync(remoteDB, {
   live: true,
