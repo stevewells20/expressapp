@@ -85,9 +85,10 @@ var Percolate = {
                 document.getElementById("percolates").innerHTML = outstring;
                 //
                 var doc = {
-                  "N": N,
-                  "count": count,
-                  "percentage": percentage,
+                    "_id": Date.now(),
+                    "N": N,
+                    "count": count,
+                    "percentage": percentage,
                 };
 
                 localDB.put(doc);

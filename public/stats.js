@@ -17,9 +17,9 @@ var localDB = new PouchDB(
 
 // Helper function for upsert plugin (incrememnts the _rev)
 function myDeltaFunction(doc) {
-  doc.counter = doc.counter || 0;
-  doc.counter++;
-  return doc;
+	doc.counter = doc.counter || 0;
+	doc.counter++;
+	return doc;
 }
 
 // Set live sync between dbs
