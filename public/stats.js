@@ -36,17 +36,18 @@ function averageDB(type){
 			console.log("total_rows : "+total)
 			res.rows.forEach( function (entry) {
             	result += entry.doc[type];
+            	console.log(entry.doc[type]+typeof(entry.doc[type]))
             	//console.log((entry.doc[type]));
          	})
-         	console.log("During else:\n\tResult: "+result);
-         	console.log("\ttotal_rows: "+total);
+         	console.log("During else:\n\tResult: "+result+typeof(result));
+         	console.log("\ttotal_rows: "+total+typeof(total));
         }
-     	console.log("After else:\n\tResult: "+result);
-     	console.log("\ttotal_rows: "+total);    
+     	console.log("After else:\n\tResult: "+result+typeof(result));
+     	console.log("\ttotal_rows: "+total+typeof(total));    
     })
 	result = result / total;
- 	console.log("After allDocs:\n\tResult: "+result);
- 	console.log("\ttotal_rows: "+total);
+ 	console.log("After allDocs:\n\tResult: "+result+typeof(result));
+ 	console.log("\ttotal_rows: "+total+typeof(total));
 	return result;
 }
 
