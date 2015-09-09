@@ -85,7 +85,7 @@ var Percolate = {
                 document.getElementById("percolates").innerHTML = outstring;
                 //
                 var doc = {
-                    "_id": "s"+Date.now(),
+                    "_id": "s"Date.now(),
                     "N": N,
                     "count": count,
                     "percentage": percentage,
