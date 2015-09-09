@@ -36,3 +36,10 @@ html
 				//| Percolation //(include img)
 			p#percolates
 			br
+		div.column
+			script.
+				var percentage;
+				var docObs = localDB.allDocs(function(err,res){
+					if (err) console.log("ERror in Jade script" +err)
+					});
+				docObs.forEach()
