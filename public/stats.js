@@ -23,8 +23,8 @@ function myDeltaFunction(doc) {
 }
 //console.log(show(localDB.allDocs({include_docs: true})));
 function averageDB(type){
-	var total = 0.0;
-	var result = 0.0;	
+	var total;
+	var result;	
 	remoteDB.allDocs({include_docs: true}, function (err,res){
 		if (!err) {
 			total = res.total_rows;
@@ -37,9 +37,8 @@ function averageDB(type){
     })
     console.log("Result\tTotal");
     console.log(result+"\t"+total);
-	result = result / total;
- 	console.log("After allDocs:\n\tResult: "+result+typeof(result));
- 	console.log("\ttotal_rows: "+total+typeof(total));
+	//result = result / total;
+
 	return result;
 }
 
