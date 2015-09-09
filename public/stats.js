@@ -3,7 +3,7 @@
 
 //establish remote db
 var remoteDB = PouchDB(
-	'http://stevewells20.ddns.net:5984/perc_db', 
+	'http://stevewells20.ddns.net:5984/', 
 	function(err){
 		if (err) {console.log('db: \n\t' + err);}	
 });
@@ -29,9 +29,9 @@ function averageDB(type){
  	// console.log("\ttotal_rows: "+total+typeof(total));
 	remoteDB.allDocs({include_docs: true}, function (err,res){
 		if (err) {
-			console.log("Error in obtaining localDB.allDocs:\n\t" +err);} 
+			console.log("Error in obtaining remoteDB.allDocs:\n\t" +err);} 
 		else {
-			//console.log(show(res));
+			console.log(show(res));
 			total = res.total_rows;
 			// console.log("total_rows : "+total)
 			res.rows.forEach( function (entry) {
