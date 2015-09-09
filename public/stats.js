@@ -21,7 +21,7 @@ function myDeltaFunction(doc) {
 	doc.counter++;
 	return doc;
 }
-console.log(show(localDB.allDocs({include_docs: true})));
+//console.log(show(localDB.allDocs({include_docs: true})));
 function averageDB(type){
 	var result = [];	
 	// var docObs = localDB.allDocs({include_docs: true});//,function(err,res){
