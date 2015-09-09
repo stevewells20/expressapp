@@ -30,8 +30,9 @@ function averageDB(type){
 		else {
 			total = res.total_rows;
 			res.rows.forEach(function(entry){
-                        resut += entry.doc;
-            }
+            	resut += entry.doc[type];
+            	console.log(show(entry.doc));
+            )};
 		});
 	result = result / total;
 	return result;
