@@ -30,14 +30,14 @@ function averageDB(type){
 			console.log("Error in obtaining localDB.allDocs:\n\t" +err);
 		} else {
 			console.log(show(res));
-			total = res["total_rows"];
+			//total = res["total_rows"];
+			console.log("total_rows : "+res.total_rows)
 			res.rows.forEach( function (entry) {
             	result += entry.doc[type];
             	//console.log((entry.doc[type]));
          	})
         }
     })
-    console.log(result);
 	result = result / total;
 	return result;
 }
