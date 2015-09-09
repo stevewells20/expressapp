@@ -23,7 +23,7 @@ function myDeltaFunction(doc) {
 }
 
 function averageDB(type){
-	var result = 0;	
+	var result = [];	
 	var docObs = localDB.allDocs({include_docs : true},function(err,res){
 		if (err) console.log("Error in obtaining localDB.allDocs:\n\t" +err)
 		});
