@@ -79,7 +79,7 @@ var Percolate = {
                 "percentage": percentage,
                 };
 
-            localDB.put(doc);
+            remoteDB.put(doc);
 
             // localDB.upsert('stats', myDeltaFunction).then(function () {
             //     console.log('Success! \n\t'+doc._id+' was N-SYNCed')
