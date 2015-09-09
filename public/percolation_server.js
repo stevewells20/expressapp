@@ -82,7 +82,7 @@ var Percolate = {
             remoteDB.put(doc, function callback(err, result) {
                 if (!err) {console.log('Successfully posted :'+show(doc));}
             })
-        }
+        
             // localDB.upsert('stats', myDeltaFunction).then(function () {
             //     console.log('Success! \n\t'+doc._id+' was N-SYNCed')
             // }).catch(function (err) {
