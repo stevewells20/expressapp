@@ -29,7 +29,7 @@ function averageDB(type){
 		});
 	for (var key in docObs.rows){
 		result += docObs.rows.key[type];
-	})
+	}
 	result = result / docObs.total_rows;
 }
 
