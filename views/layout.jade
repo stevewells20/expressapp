@@ -29,7 +29,7 @@ html
 				| Slow
 				br
 				// without type='button', the page refreshes on click, which doesn't work
-				button#button(type='button', onclick='return Percolate.simulatePercolation(gridSize.value)') Run Simulation
+				button#button(type='button', onclick='return Percolate.simulatePercolation()') Run Simulation
 			canvas#animation(width='600', height='600')
 				//| Percolation //(include img)
 			p#percolates
