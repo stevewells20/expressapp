@@ -14,6 +14,7 @@ html
 		script.
 			var interval = null;
 	body
+		div.column
 		#page-wrap
 			.header
 				#header-text
@@ -33,5 +34,5 @@ html
 				button#button(type='button', onclick='return Percolate.simulatePercolation()') Run Simulation
 			canvas#animation(width='600', height='600')
 				//| Percolation //(include img)
-			//p#percolates
+			p#percolates
 			br
