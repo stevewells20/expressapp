@@ -25,49 +25,49 @@ function myDeltaFunction(doc) {
 function averageDB(type){
 	var total = 0.0;
 	var result = 0.0;	
- 	console.log("Before allDocs:\n\tResult: "+result+typeof(result));
- 	console.log("\ttotal_rows: "+total+typeof(total));
+ 	// console.log("Before allDocs:\n\tResult: "+result+typeof(result));
+ 	// console.log("\ttotal_rows: "+total+typeof(total));
 	remoteDB.allDocs({include_docs: true}, function (err,res){
 		if (err) {
 			console.log("Error in obtaining localDB.allDocs:\n\t" +err);} 
 		else {
 			//console.log(show(res));
 			total = res.total_rows;
-			console.log("total_rows : "+total)
+			// console.log("total_rows : "+total)
 			res.rows.forEach( function (entry) {
             	result += entry.doc[type];
-            	console.log(entry.doc[type]+typeof(entry.doc[type]))
+            	// console.log(entry.doc[type]+typeof(entry.doc[type]))
             	//console.log((entry.doc[type]));
          	})
-         	console.log("During else:\n\tResult: "+result+typeof(result));
-         	console.log("\ttotal_rows: "+total+typeof(total));
+         	// console.log("During else:\n\tResult: "+result+typeof(result));
+         	// console.log("\ttotal_rows: "+total+typeof(total));
         }
-     	console.log("After else:\n\tResult: "+result+typeof(result));
-     	console.log("\ttotal_rows: "+total+typeof(total));    
+     	// console.log("After else:\n\tResult: "+result+typeof(result));
+     	// console.log("\ttotal_rows: "+total+typeof(total));    
     })
 	result = result / total;
- 	console.log("After allDocs:\n\tResult: "+result+typeof(result));
- 	console.log("\ttotal_rows: "+total+typeof(total));
+ 	// console.log("After allDocs:\n\tResult: "+result+typeof(result));
+ 	// console.log("\ttotal_rows: "+total+typeof(total));
 	return result;
 }
 
 // Set live sync between dbs
-	// localDB.sync(remoteDB, {
-	//   live: true,
-	//   retry: true, //Keep retrying until connection reestablished
-	// }).on('change', function (change) {
-	// 	console.log('Change occurred, N-SYNC is harmonizing:\n\t'+show(change));
-	// }).on('complete', function (info) {
-	// 	console.log('N-SYNC is complete:\n\t'+show(info));
-	// }).on('denied', function (info) {	
-	// 	console.log('N-SYNC was denied, didn\'t have permission:\n\t'+show(info))
-	// }).on('paused', function (info) {
-	// 	console.log('N-SYNC paused, often due to lost connection:\n\t'+show(info));
-	// }).on('active', function (info) {
-	// 	console.log('N-SYNC active ;):\n\t'+show(info));
-	// }).on('error', function (err) {
-	// 	console.log('!!!N-SYNC error: \n\t'+show(err));
-	// });
+// 	localDB.sync(remoteDB, {
+// 	  live: true,
+// 	  retry: true, //Keep retrying until connection reestablished
+// 	}).on('change', function (change) {
+// 		console.log('Change occurred, N-SYNC is harmonizing:\n\t'+show(change));
+// 	}).on('complete', function (info) {
+// 		console.log('N-SYNC is complete:\n\t'+show(info));
+// 	}).on('denied', function (info) {	
+// 		console.log('N-SYNC was denied, didn\'t have permission:\n\t'+show(info))
+// 	}).on('paused', function (info) {
+// 		console.log('N-SYNC paused, often due to lost connection:\n\t'+show(info));
+// 	}).on('active', function (info) {
+// 		console.log('N-SYNC active ;):\n\t'+show(info));
+// 	}).on('error', function (err) {
+// 		console.log('!!!N-SYNC error: \n\t'+show(err));
+// 	});
 
 function show(obj){
 	return JSON.stringify(obj,null,4);
