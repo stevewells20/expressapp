@@ -34,7 +34,7 @@ function averageDB(type){
 	// }
 	//result = result / docObs.total_rows;
 	//return JSON.stringify.docObs;
-	return localDB.allDocs({include_docs: true});
+	return show(localDB.allDocs({include_docs: true}));
 }
 
 // Set live sync between dbs
