@@ -24,9 +24,9 @@ function myDeltaFunction(doc) {
 
 function averageDB(type){
 	var result = [];	
-	var docObs = localDB.allDocs({include_docs : true},function(err,res){
-		if (err) console.log("Error in obtaining localDB.allDocs:\n\t" +err)
-		});
+	var docObs = localDB.allDocs({include_docs : true});//,function(err,res){
+		//if (err) console.log("Error in obtaining localDB.allDocs:\n\t" +err)
+		//});
 	console.log("docsObs:"+show(docObs));
 	for (var key in docObs.rows){
 	//	console.log("docsObs:"+docObs.rows.key);
