@@ -55,9 +55,9 @@ function averageDB(type){
 	// 	console.log('!!!N-SYNC error: \n\t'+show(err));
 	// });
 
-	// function show(obj){
-	// 	return JSON.stringify(obj,null,4);
-	// };
+function show(obj){
+	return JSON.stringify(obj,null,4);
+};
 
 // var doc = {
 //   "_id": "mittens",
