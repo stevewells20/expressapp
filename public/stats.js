@@ -1,4 +1,4 @@
-var PouchDB = '/pouchdb-4.0.1.min.js';
+//var PouchDB = '/pouchdb-4.0.1.min.js';
 var upsert = ('/pouchdb-upsert.min.js');
 
 //establish remote db
