@@ -32,7 +32,7 @@ function averageDB(type){
 			total = res.total_rows;
 			res.rows.forEach( function (entry) {
             	result += entry.doc[type];
-            	console.log(show(entry.doc));
+            	console.log((entry.doc[type]));
          	})
         }
     })
