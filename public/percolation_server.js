@@ -85,21 +85,23 @@ var Percolate = {
                 document.getElementById("percolates").innerHTML = outstring;
                 //
                 var doc = {
-                  "_id": N,
+                  "N": N,
                   "count": count,
                   "percentage": percentage,
                 };
 
-                localDB.upsert('stats', myDeltaFunction).then(function () {
-                    console.log('Success! \n\t'+doc._id+' was N-SYNCed')
-                }).catch(function (err) {
-                    if (err.status === 409) {
-                        console.log('Conflict in upsert: 409')}
-                    else {
-                        console.log('Some other error! \n\t'+err)
-                    }
+                localDB.put(doc);
 
-                });
+
+                // localDB.upsert('stats', myDeltaFunction).then(function () {
+                //     console.log('Success! \n\t'+doc._id+' was N-SYNCed')
+                // }).catch(function (err) {
+                //     if (err.status === 409) {
+                //         console.log('Conflict in upsert: 409')}
+                //     else {
+                //         console.log('Some other error! \n\t'+err)
+                //     }
+                // });
                 //
             }
         }
