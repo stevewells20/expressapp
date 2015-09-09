@@ -27,12 +27,13 @@ function averageDB(type){
 	var docObs = localDB.allDocs({include_docs : true},function(err,res){
 		if (err) console.log("Error in obtaining localDB.allDocs:\n\t" +err)
 		});
+	console.log("docsObs:"+docObs)
 	for (var key in docObs.rows){
-		//console.log(docObs.rows.key);
+	//	console.log("docsObs:"+docObs.rows.key);
 		result += docObs.rows.key[type];
 	}
-	result = result / docObs.total_rows;
-	return JSON.stringify.docObs;
+	//result = result / docObs.total_rows;
+	//return JSON.stringify.docObs;
 }
 
 // Set live sync between dbs
