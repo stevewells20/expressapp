@@ -23,8 +23,8 @@ function myDeltaFunction(doc) {
 }
 //console.log(show(localDB.allDocs({include_docs: true})));
 function averageDB(type){
-	var total = 0;
-	var result = 0;	
+	var total = 0.0;
+	var result = 0.0;	
 	remoteDB.allDocs({include_docs: true}, function (err,res){
 		if (err) {
 			console.log("Error in obtaining localDB.allDocs:\n\t" +err);
