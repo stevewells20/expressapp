@@ -24,10 +24,10 @@ function myDeltaFunction(doc) {
 
 function averageDB(type){
 	var result = [];	
-	var docObs = localDB.allDocs({include_docs : true});//,function(err,res){
+	var docObs = localDB.allDocs({include_docs: true});//,function(err,res){
 		//if (err) console.log("Error in obtaining localDB.allDocs:\n\t" +err)
 		//});
-	console.log("docsObs:"+show(docObs));
+	console.log("docsObs:"+docObs.toString());
 	for (var key in docObs.rows){
 	//	console.log("docsObs:"+docObs.rows.key);
 		result += docObs.rows.key[type];
