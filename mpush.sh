@@ -4,7 +4,7 @@ spawn git add --all .
 expect eof; 
 spawn git commit -m "Added d3 to modules" 
 expect eof;
-spawn git push origin testing
+spawn git push origin dev
 expect "'https://github.com': "
 #sleep 1
 send "stevewells20\n"
