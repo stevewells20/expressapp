@@ -36,6 +36,7 @@ function averageDB(type){
          	})
         }
     })
+    console.log(result);
 	result = result / total;
 	return result;
 }
