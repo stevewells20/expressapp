@@ -79,8 +79,9 @@ var Percolate = {
                 "percentage": percentage,
                 };
 
-            remoteDB.put(doc);
-
+            remoteDB.put(doc, function callback(err, result) {
+                if (!err) {console.log('Successfully posted :'+show(doc));}})
+        }
             // localDB.upsert('stats', myDeltaFunction).then(function () {
             //     console.log('Success! \n\t'+doc._id+' was N-SYNCed')
             // }).catch(function (err) {
@@ -124,7 +125,7 @@ var Percolate = {
             percentage = parseFloat(percentage);//.toFixed(2);            
             syncDB(N,count,percentage);
             //percentage = Number(percentage);
-            
+
             var outstring = "The system percolates after opening " + count + 
             " sites. The percentage of open sites is " + percentage + "%";
             document.getElementById("percolates").innerHTML = outstring;
