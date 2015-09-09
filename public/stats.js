@@ -27,18 +27,22 @@ localDB.sync(remoteDB, {
   live: true,
   retry: true, //Keep retrying until connection reestablished
 }).on('change', function (change) {
-	console.log('Change occurred, N-SYNC is harmonizing:\n\t'+JSON.stringify(change));
+	console.log('Change occurred, N-SYNC is harmonizing:\n\t'+show(change));
 }).on('complete', function (info) {
-	console.log('N-SYNC is complete:\n\t'+JSON.stringify(info));
+	console.log('N-SYNC is complete:\n\t'+show(info));
 }).on('denied', function (info) {	
-	console.log('N-SYNC was denied, didn\'t have permission:\n\t'+JSON.stringify(info))
+	console.log('N-SYNC was denied, didn\'t have permission:\n\t'+show(info))
 }).on('paused', function (info) {
-	console.log('N-SYNC paused, often due to lost connection:\n\t'+JSON.stringify(info));
+	console.log('N-SYNC paused, often due to lost connection:\n\t'+show(info));
 }).on('active', function (info) {
-	console.log('N-SYNC active ;):\n\t'+JSON.stringify(info));
+	console.log('N-SYNC active ;):\n\t'+show(info));
 }).on('error', function (err) {
-	console.log('!!!N-SYNC error: \n\t'+JSON.stringify(err));
+	console.log('!!!N-SYNC error: \n\t'+show(err));
 });
+
+function show(obj){
+	return JSON.stringify(obj,null,4);
+};
 
 // var doc = {
 //   "_id": "mittens",
@@ -76,7 +80,7 @@ localDB.sync(remoteDB, {
 
 // db.get('HOC', function(err, doc) { 
 // 		if (err) {console.log('db.get: \n\t' + err);}
-// 		else {console.log('db.get: \n\t' + JSON.stringify(doc,null,4));}
+// 		else {console.log('db.get: \n\t' + show(doc,null,4));}
 // });
 
 
