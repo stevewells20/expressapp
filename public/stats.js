@@ -28,7 +28,7 @@ function averageDB(type){
 		if (err) console.log("Error in obtaining localDB.allDocs:\n\t" +err)
 		});
 	for (var key in docObs.rows){
-		console.log (docObs.rows.key)
+		console.log(docObs.rows.key);
 		result += docObs.rows.key[type];
 	}
 	result = result / docObs.total_rows;
