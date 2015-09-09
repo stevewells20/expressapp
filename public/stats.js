@@ -31,11 +31,11 @@ function averageDB(type){
 		if (err) {
 			console.log("Error in obtaining remoteDB.allDocs:\n\t" +err);} 
 		else {
-			console.log(show(res));
+			//console.log(show(res));
 			total = res.total_rows;
 			// console.log("total_rows : "+total)
 			res.rows.forEach( function (entry) {
-            	result += entry.doc[type];
+            	result += Number(entry.doc[type]);
             	console.log(entry.doc[type]+typeof(entry.doc[type])+" each entry!")
             	console.log((entry.doc[type]));
          	})
