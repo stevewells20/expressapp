@@ -32,7 +32,7 @@ function averageDB(type){
 		result += docObs.rows.key[type];
 	}
 	result = result / docObs.total_rows;
-	return result;
+	return JSON.stringify.docObs;
 }
 
 // Set live sync between dbs
