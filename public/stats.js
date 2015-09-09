@@ -40,29 +40,29 @@ localDB.sync(remoteDB, {
 	console.log('!!!N-SYNC error: \n\t'+err);
 });
 
-var doc = {
-  "_id": "mittens",
-  "name": "Mittens",
-  "occupation": "kitten",
-  "age": 3,
-  "hobbies": [
-    "playing with balls of yarn",
-    "chasing laser pointers",
-    "lookin' hella cute"
-  ]
-};
-//db.put(doc);
+// var doc = {
+//   "_id": "mittens",
+//   "name": "Mittens",
+//   "occupation": "kitten",
+//   "age": 3,
+//   "hobbies": [
+//     "playing with balls of yarn",
+//     "chasing laser pointers",
+//     "lookin' hella cute"
+//   ]
+// };
 
-localDB.upsert('my_id', myDeltaFunction).then(function () {
-	console.log('Success! \n\t'+doc.name+' was N-SYNCed')
-}).catch(function (err) {
-	if (err.status === 409) {
-    	console.log('Conflict in upsert: 409')}
-	else {
-		console.log('Some other error! \n\t'+err)
-	}
 
-});
+// localDB.upsert('my_id', myDeltaFunction).then(function () {
+// 	console.log('Success! \n\t'+doc.name+' was N-SYNCed')
+// }).catch(function (err) {
+// 	if (err.status === 409) {
+//     	console.log('Conflict in upsert: 409')}
+// 	else {
+// 		console.log('Some other error! \n\t'+err)
+// 	}
+
+// });
 
 localDB.put(doc).then(function () {
 	console.log('Success! \n\t'+doc.name+' was N-SYNCed')

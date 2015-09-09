@@ -83,6 +83,24 @@ var Percolate = {
                 var outstring = "The system percolates after opening " + count + 
                 " sites. The percentage of open sites is " + percentage + "%";
                 document.getElementById("percolates").innerHTML = outstring;
+                //
+                var doc = {
+                  "_id": N,
+                  "count": count,
+                  "percentage": percentage,
+                };
+
+                localDB.upsert('stats', myDeltaFunction).then(function () {
+                    console.log('Success! \n\t'+doc.name+' was N-SYNCed')
+                }).catch(function (err) {
+                    if (err.status === 409) {
+                        console.log('Conflict in upsert: 409')}
+                    else {
+                        console.log('Some other error! \n\t'+err)
+                    }
+
+                });
+                //
             }
         }
 
