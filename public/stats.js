@@ -25,25 +25,14 @@ function myDeltaFunction(doc) {
 function averageDB(type){
 	var total = 0.0;
 	var result = 0.0;	
- 	console.log("Before allDocs:\n\tResult: "+result+typeof(result));
- 	console.log("\ttotal_rows: "+total+typeof(total));
 	remoteDB.allDocs({include_docs: true}, function (err,res){
-		if (err) {
-			console.log("Error in obtaining remoteDB.allDocs:\n\t" +err);} 
-		else {
-			//console.log(show(res));
+		if (!err) {
 			total = res.total_rows;
-			// console.log("total_rows : "+total)
 			res.rows.forEach( function (entry) {
-            	result += Number(entry.doc[type]);
-            	console.log(entry.doc[type]+typeof(entry.doc[type])+" each entry!")
-            	console.log((entry.doc[type]));
+            	result += (entry.doc[type]*1);
          	})
-         	console.log("During else:\n\tResult: "+result+typeof(result));
-         	console.log("\ttotal_rows: "+total+typeof(total));
-        }
-     	console.log("After else:\n\tResult: "+result+typeof(result));
-     	console.log("\ttotal_rows: "+total+typeof(total));    
+        } else {console.log("Error in obtaining remoteDB.allDocs:\n\t" +err);} 
+		   
     })
 	result = result / total;
  	console.log("After allDocs:\n\tResult: "+result+typeof(result));
