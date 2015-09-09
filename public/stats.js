@@ -23,18 +23,18 @@ function myDeltaFunction(doc) {
 }
 //console.log(show(localDB.allDocs({include_docs: true})));
 function averageDB(type){
-	var result = [];	
-	// var docObs = localDB.allDocs({include_docs: true});//,function(err,res){
-	// 	//if (err) console.log("Error in obtaining localDB.allDocs:\n\t" +err)
-	// 	//});
-	// console.log("docsObs:"+show(docObs));
-	// for (var key in docObs.rows){
-	// //	console.log("docsObs:"+docObs.rows.key);
-	// 	result += docObs.rows.key[type];
-	// }
-	//result = result / docObs.total_rows;
-	//return JSON.stringify.docObs;
-	return show(remoteDB.allDocs({include_docs: true}));
+	var total;
+	var result = 0;	
+	remoteDB.allDocs({include_docs: true},function(err,res){
+		if (err) {console.log("Error in obtaining localDB.allDocs:\n\t" +err);}
+		else {
+			total = res.total_rows;
+			res.rows.forEach(function(entry){
+                        resut += entry.doc;
+            }
+		});
+	result = result / total;
+	return result;
 }
 
 // Set live sync between dbs
