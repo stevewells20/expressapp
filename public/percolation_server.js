@@ -103,6 +103,7 @@ var Percolate = {
             } else {
                 clearInterval(interval);
                 var percentage = parseFloat((count * 100) / (N * N)).toFixed(2);
+                percentage = Number(percentage);
                 var outstring = "Total average of percolation: "+averageDB("percentage")+"%\nThe system percolates after opening " + count + 
                 " sites. The percentage of open sites is " + percentage + "%";
                 document.getElementById("percolates").innerHTML = outstring;
@@ -118,6 +119,7 @@ var Percolate = {
             }
             drawPerc.drawGrid();
             var percentage = parseFloat((count * 100) / (N * N)).toFixed(2);
+            percentage = Number(percentage);
             var outstring = "The system percolates after opening " + count + 
             " sites. The percentage of open sites is " + percentage + "%";
             document.getElementById("percolates").innerHTML = outstring;
