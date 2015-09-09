@@ -27,17 +27,17 @@ localDB.sync(remoteDB, {
   live: true,
   retry: true, //Keep retrying until connection reestablished
 }).on('change', function (change) {
-	console.log('Change occurred, N-SYNC is harmonizing:\n\t'+change);
+	console.log('Change occurred, N-SYNC is harmonizing:\n\t'+JSON.stringify(change));
 }).on('complete', function (info) {
-	console.log('N-SYNC is complete:\n\t'+info);
+	console.log('N-SYNC is complete:\n\t'+JSON.stringify(info));
 }).on('denied', function (info) {	
-	console.log('N-SYNC was denied, didn\'t have permission:\n\t'+info)
+	console.log('N-SYNC was denied, didn\'t have permission:\n\t'+JSON.stringify(info))
 }).on('paused', function (info) {
-	console.log('N-SYNC paused, often due to lost connection:\n\t'+info);
+	console.log('N-SYNC paused, often due to lost connection:\n\t'+JSON.stringify(info));
 }).on('active', function (info) {
-	console.log('N-SYNC active ;):\n\t'+info);
+	console.log('N-SYNC active ;):\n\t'+JSON.stringify(info));
 }).on('error', function (err) {
-	console.log('!!!N-SYNC error: \n\t'+err);
+	console.log('!!!N-SYNC error: \n\t'+JSON.stringify(err));
 });
 
 // var doc = {
