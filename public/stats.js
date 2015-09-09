@@ -2,8 +2,8 @@
 // PouchDB.plugin('/pouchdb-upsert.min.js');
 
 //establish remote db
-var remoteDB = PouchDB(
-	'http://stevewells20.ddns.net:5984/', 
+var remoteDB = new PouchDB(
+	'http://stevewells20.ddns.net:5984/perc_db', 
 	function(err){
 		if (err) {console.log('db: \n\t' + err);}	
 });
