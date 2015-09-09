@@ -64,15 +64,15 @@ localDB.sync(remoteDB, {
 
 // });
 
-localDB.put(doc).then(function () {
-	console.log('Success! \n\t'+doc.name+' was N-SYNCed')
-}).catch(function (err) {
-  if (err.status === 409) {
-    // conflict!
-  } else {
-    // some other error
-  }
-});
+// localDB.put(doc).then(function () {
+// 	console.log('Success! \n\t'+doc.name+' was N-SYNCed')
+// }).catch(function (err) {
+//   if (err.status === 409) {
+//     // conflict!
+//   } else {
+//     // some other error
+//   }
+// });
 
 // db.get('HOC', function(err, doc) { 
 // 		if (err) {console.log('db.get: \n\t' + err);}
