@@ -107,6 +107,7 @@ var Percolate = {
                 " sites. The percentage of open sites is " + percentage + "%";
                 document.getElementById("percolates").innerHTML = outstring;
                 syncDB(N,count,percentage);//
+            }
         }
 
         // Runs a while loop until system percolates then outputs to screen
