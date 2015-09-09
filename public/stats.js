@@ -25,15 +25,17 @@ function myDeltaFunction(doc) {
 function averageDB(type){
 	var total;
 	var result = 0;	
-	remoteDB.allDocs({include_docs: true}, function(err,res){
-		if (err) {console.log("Error in obtaining localDB.allDocs:\n\t" +err);}
-		else {
+	remoteDB.allDocs({include_docs: true}, function (err,res){
+		if (err) {
+			console.log("Error in obtaining localDB.allDocs:\n\t" +err);
+		} else {
 			total = res.total_rows;
-			res.rows.forEach(function(entry){
+			res.rows.forEach( function (entry) {
             	resut += entry.doc[type];
             	console.log(show(entry.doc));
-            )};
-		}});
+         	})
+        }
+    })
 	result = result / total;
 	return result;
 }
