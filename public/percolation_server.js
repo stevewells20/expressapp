@@ -91,7 +91,7 @@ var Percolate = {
                 };
 
                 localDB.upsert('stats', myDeltaFunction).then(function () {
-                    console.log('Success! \n\t'+doc.name+' was N-SYNCed')
+                    console.log('Success! \n\t'+doc._id+' was N-SYNCed')
                 }).catch(function (err) {
                     if (err.status === 409) {
                         console.log('Conflict in upsert: 409')}
