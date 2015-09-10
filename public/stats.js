@@ -28,7 +28,7 @@ function averageDB(type){
 	remoteDB.allDocs({
 		include_docs: true,
 	}).then(function (result) {
-		if (typeof(total) == "number") {total = result.total_rows;};
+		if (typeof(total) == "number") {total = result.total_rows;}
 		else {throw "ERROR: total is NaN!";};
 		result.rows.forEach( function (entry) {
         	result = entry.doc[type] + result;
