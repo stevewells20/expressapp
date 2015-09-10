@@ -30,7 +30,7 @@ function averageDB(type){
 			total = res.total_rows;
 			res.rows.forEach( function (entry) {
             	result += (entry.doc[type]*1);
-            	console.log("entry: "+ (entry.doc[type]*1));
+            	console.log("entry: "+ (result));
          	})
         } else {console.log("Error in obtaining remoteDB.allDocs:\n\t" +err);} 
 		   
