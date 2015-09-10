@@ -22,21 +22,19 @@ function myDeltaFunction(doc) {
 	return doc;
 }
 //console.log(show(localDB.allDocs({include_docs: true})));
-var averageDB = function(type) {
+function averageDB(type, callback) {
 	remoteDB.allDocs({
 		include_docs: true,
 	}).then(function (result) {
-		return result;
-
-	// 	var output= 0.0;	
-	// 	var total = result.total_rows;
-	// 	result.rows.forEach( function (entry) {
- //        	output = entry.doc[type] + output;
+		var output= 0.0;	
+		var total = result.total_rows;
+		result.rows.forEach( function (entry) {
+        	output = entry.doc[type] + output;
  //        	console.log(output+"\t: output type is :\t"+ typeof(output));
  //        	console.log(show(entry.doc[type])+"\t: entry.doc[type] type is :\t"+ typeof(entry.doc[type]));
- //     	});
- //     	return output;
-	// }).then(function (output) {
+     	});
+	}).then(function (output) {
+		callback(output);
 	// 	console.log("stats.js Done! Final output:\t"+output);
 	// 	setTimeout(10000);
 	// 	return output;
