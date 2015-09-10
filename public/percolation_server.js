@@ -9,7 +9,7 @@ var Percolate = {
         
         // Helper function to convert row/col nums to grid locations
         function loc(coordinate) {
-            return firstSiteLocation + (coordinate - 1) * siteSize
+            return firstSiteLocation + (coordinate - 1) * siteSize;
         }
         
         ctx.fillStyle="grey";
@@ -30,7 +30,7 @@ var Percolate = {
                     } 
                 }
             }
-        }
+        };
     },
 
     // Main function.  Open sites randomly until percolation, calling draw with each open.
@@ -81,7 +81,7 @@ var Percolate = {
 
             remoteDB.put(doc, function callback(err, result) {
                 if (!err) {console.log('Successfully posted :'+show(doc));}
-            })
+            });
         }
 
         function formNum(num){
@@ -184,11 +184,11 @@ var Percolate = {
             }
 
 
-        }
+        };
         
         this.isOpen = function(i, j) {
             return opened[xyTo1D(i, j)];
-        }
+        };
 
         // A site is full if a path exists from it to the top
         this.isFull = function(i, j) {
@@ -199,7 +199,7 @@ var Percolate = {
         this.percolates = function() {
             return uf.connected(0, size * size + 1);
             return 0;
-        }
+        };
     },
 
     // Union find implementation for efficient checking of percolation
@@ -222,12 +222,12 @@ var Percolate = {
                 p = id[p];
             }
             return p;
-        }
+        };
 
         // Returns true if two elements are part of the same component
         this.connected = function(p, q) {
             return this.find(p) === this.find(q);
-        }
+        };
 
         // Connects the components of two elements
         this.union = function(p, q) {
@@ -242,7 +242,7 @@ var Percolate = {
                 id[rootQ] = rootP; sz[rootP] += sz[rootQ];
             }
             this.count--;
-        }
+        };
     },
 
 };
