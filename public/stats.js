@@ -22,7 +22,7 @@ function myDeltaFunction(doc) {
 	return doc;
 }
 
-function storeDocs(output,total) {
+function storeDocs(output, total) {
 
 	return (output,total);
 }
@@ -35,7 +35,7 @@ function pullDocs(type, callback) {
 		result.rows.forEach( function (entry) {
         	output = entry.doc[type] + output;
      	});
-     	callback(output,total,variable);
+     	callback(output, total, variable);
      });
 	// }).then(function (output) {
 	// 	callback(output);
