@@ -101,7 +101,7 @@ var Percolate = {
                 var average = function(){return averageDB("percentage")};
                 console.log("From percolation_server.js: \naverageDB returns:\t"+average+"\tType of:\t"+typeof(average));
 
-                var outstring = "Total average of percolation: "+ formNum(average) +"%\nThe system percolates after opening " + count + 
+                var outstring = "Total average of percolation: "+ formNum(average()) +"%\nThe system percolates after opening " + count + 
                 " sites. The percentage of open sites is " + formNum(percentage) + "%";
                 document.getElementById("percolates").innerHTML = outstring;
             }
@@ -119,7 +119,7 @@ var Percolate = {
             var average = function(){return averageDB("percentage")};
             console.log("From percolation_server.js: \naverageDB returns:\t"+average+"\tType of:\t"+typeof(average));
 
-            var outstring = "Total average of percolation: "+ formNum(average) +"%\nThe system percolates after opening " + count + 
+            var outstring = "Total average of percolation: "+ formNum(average()) +"%\nThe system percolates after opening " + count + 
             " sites. The percentage of open sites is " + formNum(percentage) + "%";
             document.getElementById("percolates").innerHTML = outstring;
         }
