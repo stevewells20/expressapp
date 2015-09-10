@@ -51,7 +51,7 @@ function averageDB(type){
 // 	}).on('denied', function (info) {	
 // 		console.log('N-SYNC was denied, didn\'t have permission:\n\t'+show(info))
 // 	}).on('paused', function (info) {
-// 		console.log('N-SYNC paused, often due to lost connection:\n\t'+show(info));
+// 		console.log('N-SYNC paused, which is often due to lost connection:\n\t'+show(info));
 // 	}).on('active', function (info) {
 // 		console.log('N-SYNC active ;):\n\t'+show(info));
 // 	}).on('error', function (err) {
