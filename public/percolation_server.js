@@ -98,7 +98,7 @@ var Percolate = {
                 clearInterval(interval);
                 var percentage = (count * 100.0) / (N * N);
                 syncDB(N,count,percentage);
-
+                
 //              console.log("From percolation_server.js: \naverageDB returns:\t"+average+"\tType of:\t"+typeof(average));
 
                 var outstring = "The system percolates after opening " + count + 
