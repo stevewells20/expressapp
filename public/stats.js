@@ -35,7 +35,7 @@ function averageDB(type){
         	console.log(show(entry.doc[type])+"\t: entry.doc[type] type is :\t"+ typeof(entry.doc[type]));
      	})
 //	}).then(function (output) {
-	//console.log("Final result:\t"+result);
+console.log("Final output:\t"+output);
 return output;
 })
 }
