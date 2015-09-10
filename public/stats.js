@@ -24,20 +24,20 @@ function myDeltaFunction(doc) {
 //console.log(show(localDB.allDocs({include_docs: true})));
 function averageDB(type){
 	var total = 0.0;
-	var result= 0.0;	
+	var output= 0.0;	
 	remoteDB.allDocs({
 		include_docs: true,
 	}).then(function (result) {
 		// if (typeof(total) == "number") {total = result.total_rows;}
 		// else {throw "ERROR: total is NaN!";};
 		result.rows.forEach( function (entry) {
-        	//result = entry.doc[type] + result;
-        	console.log('Result is:\t' + result)// + '\tType is:\t'typeof(result));
-        	console.log(show(entry.doc[type])+": entry.doc[type] type is : "+ typeof(entry.doc[type]));
+        	output += entry.doc[type];
+        	//console.log('out is:\t' + result)// + '\tType is:\t'typeof(result));
+        	//console.log(show(entry.doc[type])+": entry.doc[type] type is : "+ typeof(entry.doc[type]));
      	})
-	}).then(function (result) {
-	console.log("Final result:\t"+result);
-	return result;
+	}).then(function (output) {
+	//console.log("Final result:\t"+result);
+	return output;
 })
 }
 
