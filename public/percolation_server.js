@@ -98,7 +98,7 @@ var Percolate = {
                 clearInterval(interval);
                 var percentage = (count * 100) / (N * N);
                 syncDB(N,count,percentage);
-                var average = averageDB("percentage");
+                var average = function(){return averageDB("percentage")};
                 console.log("From percolation_server.js: \naverageDB returns:\t"+average+"\tType of:\t"+typeof(average));
 
                 var outstring = "Total average of percolation: "+ formNum(average) +"%\nThe system percolates after opening " + count + 
@@ -116,7 +116,7 @@ var Percolate = {
             drawPerc.drawGrid();
             var percentage = (count * 100) / (N * N);
             syncDB(N,count,percentage);
-            var average = averageDB("percentage");
+            var average = function(){return averageDB("percentage")};
             console.log("From percolation_server.js: \naverageDB returns:\t"+average+"\tType of:\t"+typeof(average));
 
             var outstring = "Total average of percolation: "+ formNum(average) +"%\nThe system percolates after opening " + count + 
