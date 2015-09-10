@@ -82,19 +82,9 @@ var Percolate = {
             remoteDB.put(doc, function callback(err, result) {
                 if (!err) {console.log('Successfully posted :'+show(doc));}
             })
-        
-            // localDB.upsert('stats', myDeltaFunction).then(function () {
-            //     console.log('Success! \n\t'+doc._id+' was N-SYNCed')
-            // }).catch(function (err) {
-            //     if (err.status === 409) {
-            //         console.log('Conflict in upsert: 409')}
-            //     else {
-            //         console.log('Some other error! \n\t'+err)
-            //     }
-            // });
-            //
-            //}
         }
+
+        
 
         // Open random sites and re-draw grid until system percolates
         function checkPerc() {
@@ -104,8 +94,7 @@ var Percolate = {
                 drawPerc.drawGrid();
             } else {
                 clearInterval(interval);
-                var percentage = (count * 100) / (N * N);
-                percentage = parseFloat(percentage);//.toFixed(2);
+                var percentage = parseFloat(count * 100) / (N * N).toFixed(2);
                 syncDB(N,count,percentage);
                 //percentage = Number(percentage);
 
@@ -122,9 +111,8 @@ var Percolate = {
                 count++;
             }
             drawPerc.drawGrid();
-            var percentage = (count * 100) / (N * N);
-            percentage = parseFloat(percentage);//.toFixed(2);            
-            syncDB(N,count,percentage);
+            var percentage = parseFloat(count * 100) / (N * N).toFixed(2);
+            syncDB(N,count,percentage)
             //percentage = Number(percentage);
 
             var outstring = "The system percolates after opening " + count + 
