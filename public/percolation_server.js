@@ -116,7 +116,7 @@ var Percolate = {
             var percentage = (count * 100) / (N * N);
             syncDB(N,count,percentage);
             var average = averageDB("percentage");
-
+            console.log("From percolation_server.js: \naverageDB returns:\t"+average);
             var outstring = "Total average of percolation: "+ formNum(average) +"%\nThe system percolates after opening " + count + 
             " sites. The percentage of open sites is " + formNum(percentage) + "%";
             document.getElementById("percolates").innerHTML = outstring;
