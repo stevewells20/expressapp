@@ -23,7 +23,7 @@ function myDeltaFunction(doc) {
 }
 
 function storeDocs(output, total) {
-
+	console.log("output:\t"+output+"total:\t"+total);
 	return (output,total);
 }
 
