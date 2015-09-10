@@ -102,7 +102,7 @@ var Percolate = {
                 var output= 0.0;    
                 var total = result.total_rows;
                 result.rows.forEach( function (entry) {
-                output = entry.doc[type] + output;
+                    output = entry.doc[type] + output;});
                 console.log("From percolation_server.js: \naverageDB returns:\t"+average+"\tType of:\t"+typeof(average));
 
                 var outstring = "Total average of percolation: "+ formNum(average) +"%\nThe system percolates after opening " + count + 
