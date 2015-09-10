@@ -37,6 +37,7 @@ function averageDB(type){
 
      	})
 	});
+	console.log("Final result:\t"+result);
 	return result;
 }
 
