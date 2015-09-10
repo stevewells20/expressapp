@@ -85,7 +85,7 @@ var Percolate = {
         }
 
         function formNum(num){
-            return parseFloat(num.toFixed(2));
+            return num;//parseFloat(num.toFixed(2));
         }
 
         // Open random sites and re-draw grid until system percolates
@@ -99,6 +99,7 @@ var Percolate = {
                 var percentage = (count * 100) / (N * N);
                 syncDB(N,count,percentage);
                 var average = averageDB("percentage");
+                console.log("From percolation_server.js: \naverageDB returns:\t"+average+"\tType of:\t"+typeof(average));
 
                 var outstring = "Total average of percolation: "+ formNum(average) +"%\nThe system percolates after opening " + count + 
                 " sites. The percentage of open sites is " + formNum(percentage) + "%";
@@ -116,7 +117,8 @@ var Percolate = {
             var percentage = (count * 100) / (N * N);
             syncDB(N,count,percentage);
             var average = averageDB("percentage");
-            console.log("From percolation_server.js: \naverageDB returns:\t"+average);
+            console.log("From percolation_server.js: \naverageDB returns:\t"+average+"\tType of:\t"+typeof(average));
+
             var outstring = "Total average of percolation: "+ formNum(average) +"%\nThe system percolates after opening " + count + 
             " sites. The percentage of open sites is " + formNum(percentage) + "%";
             document.getElementById("percolates").innerHTML = outstring;
