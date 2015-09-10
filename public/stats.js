@@ -35,9 +35,10 @@ function averageDB(type){
         	console.log('Result is:\t' + result)// + '\tType is:\t'typeof(result));
         	console.log(show(entry.doc[type])+": Entry.doc[type] type is : "+ typeof(entry.doc[type]));
      	})
-	});
+	}).then(function (result) {
 	console.log("Final result:\t"+result);
 	return result;
+})
 }
 
 // Set live sync between dbs
