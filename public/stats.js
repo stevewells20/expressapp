@@ -23,12 +23,11 @@ function myDeltaFunction(doc) {
 }
 //console.log(show(localDB.allDocs({include_docs: true})));
 var averageDB = function(type){
-	var total = 0.0;
-	var output= 0.0;	
 	remoteDB.allDocs({
 		include_docs: true,
 	}).then(function (result) {
-		total = result.total_rows;
+		var output= 0.0;	
+		var total = result.total_rows;
 		result.rows.forEach( function (entry) {
         	output = entry.doc[type] + output;
         	console.log(output+"\t: output type is :\t"+ typeof(output));
