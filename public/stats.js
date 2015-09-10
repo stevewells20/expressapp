@@ -33,7 +33,6 @@ function averageDB(type){
 		console.log(total+" : Total type is : "+typeof(total));
 		result.rows.forEach( function (entry) {
         	result = parseInt(entry.doc[type]*1)+parseInt(result);
-        	console.log(show(entry.doc)+": Entry.doc type is : "+ typeof(entry.doc));
         	console.log(show(entry.doc[type])+": Entry.doc[type] type is : "+ typeof(entry.doc[type]));
 
      	})

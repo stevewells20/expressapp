@@ -94,7 +94,7 @@ var Percolate = {
                 drawPerc.drawGrid();
             } else {
                 clearInterval(interval);
-                var percentage = parseFloat(count * 100) / (N * N);//.toFixed(2);
+                var percentage = (count * 100) / (N * N);//.toFixed(2);
                 syncDB(N,count,percentage);
                 //percentage = Number(percentage);
 
@@ -111,7 +111,7 @@ var Percolate = {
                 count++;
             }
             drawPerc.drawGrid();
-            var percentage = parseFloat(count * 100) / (N * N);//.toFixed(2);
+            var percentage = (count * 100) / (N * N);//.toFixed(2);
             syncDB(N,count,percentage)
             //percentage = Number(percentage);
 
