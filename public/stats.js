@@ -28,11 +28,11 @@ function averageDB(type){
 	remoteDB.allDocs({
 		include_docs: true,
 	}).then(function (result) {
-		if (typeof(total) == "number") {total = result.total_rows;}
-		else {throw "ERROR: total is NaN!";};
+		// if (typeof(total) == "number") {total = result.total_rows;}
+		// else {throw "ERROR: total is NaN!";};
 		result.rows.forEach( function (entry) {
         	result = entry.doc[type] + result;
-        	console.log('Result is:\t' + result + '\tType is:\t'typeof(result)));
+        	// console.log('Result is:\t' + result + '\tType is:\t'typeof(result));
         	console.log(show(entry.doc[type])+": Entry.doc[type] type is : "+ typeof(entry.doc[type]));
      	})
 	});
