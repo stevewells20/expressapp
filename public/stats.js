@@ -26,7 +26,7 @@ var averageDB = function(type) {
 	remoteDB.allDocs({
 		include_docs: true,
 	}).then(function (result) {
-		return result;//
+		return result;
 
 	// 	var output= 0.0;	
 	// 	var total = result.total_rows;
