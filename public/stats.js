@@ -22,7 +22,7 @@ function myDeltaFunction(doc) {
 	return doc;
 }
 //console.log(show(localDB.allDocs({include_docs: true})));
-function averageDB(type){
+var averageDB = function (type, function (output){return output;}){
 	var total = 0.0;
 	var output= 0.0;	
 	remoteDB.allDocs({
@@ -37,7 +37,7 @@ function averageDB(type){
 	}).then(function () {
 		console.log("stats.js Done! Final output:\t"+output);
 		setTimeout(10000);
-		return output;
+
 	});
 }
 
