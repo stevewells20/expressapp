@@ -98,7 +98,7 @@ var Percolate = {
                 clearInterval(interval);
                 var percentage = (count * 100) / (N * N);
                 syncDB(N,count,percentage);
-                var average = averageDB("percentage",console.log);
+                var average = averageDB("percentage",pullDocs());
                 // var output= 0.0;    
                 // var total = result.total_rows;
                 // result.rows.forEach( function (entry) {

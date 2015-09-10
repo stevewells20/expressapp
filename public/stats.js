@@ -21,24 +21,28 @@ function myDeltaFunction(doc) {
 	doc.counter++;
 	return doc;
 }
+
+function storeDocs(output,total) {
+
+	return (output,total);
+}
+
 //console.log(show(localDB.allDocs({include_docs: true})));
-function averageDB(type, callback) {
-	remoteDB.allDocs({
-		include_docs: true,
-	}).then(function (result) {
+function pullDocs(type, callback) {
+	remoteDB.allDocs({include_docs: true}, function (result) {
 		var output= 0.0;	
 		var total = result.total_rows;
 		result.rows.forEach( function (entry) {
         	output = entry.doc[type] + output;
- //        	console.log(output+"\t: output type is :\t"+ typeof(output));
- //        	console.log(show(entry.doc[type])+"\t: entry.doc[type] type is :\t"+ typeof(entry.doc[type]));
      	});
-	}).then(function (output) {
-		callback(output);
-	// 	console.log("stats.js Done! Final output:\t"+output);
-	// 	setTimeout(10000);
-	// 	return output;
-	});
+     	callback(output,total,variable);
+     });
+	// }).then(function (output) {
+	// 	callback(output);
+	// // 	console.log("stats.js Done! Final output:\t"+output);
+	// // 	setTimeout(10000);
+	// // 	return output;
+	// });
 }
 
 // Set live sync between dbs
