@@ -22,12 +22,27 @@ function myDeltaFunction(doc) {
 	return doc;
 }
 
+function show(obj){
+	return JSON.stringify(obj,null,4);
+}
+
+
 // Set live sync between dbs
 localDB.sync(remoteDB, {
   live: true,
   retry: true, //Keep retrying until connection reestablished
 }).on('change', function (change) {
 	console.log('Change occurred, N-SYNC is harmonizing:\n\t'+show(change));
+	localDB.allDocs({
+		include_docs: true,
+	}).then(function (result) {
+		console.log('result: '+show(result)); //
+		Data = result;
+		// for (element in result.doc){
+		// 	Data.total_percentage += 
+		return Data;
+	})
+
 }).on('complete', function (info) {
 	console.log('N-SYNC is complete:\n\t'+show(info));
 }).on('denied', function (info) {	
@@ -40,6 +55,5 @@ localDB.sync(remoteDB, {
 	console.log('!!!N-SYNC error: \n\t'+show(err));
 });
 
-function show(obj){
-	return JSON.stringify(obj,null,4);
+var Data = {
 }
