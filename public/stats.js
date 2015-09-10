@@ -41,7 +41,7 @@ localDB.sync(remoteDB, {
 		// for (element in result.doc){
 		// 	Data.total_percentage += 
 		return Data;
-	})
+	});
 
 }).on('complete', function (info) {
 	console.log('N-SYNC is complete:\n\t'+show(info));
