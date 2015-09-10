@@ -32,12 +32,12 @@ function averageDB(type){
 		// else {throw "ERROR: total is NaN!";};
 		result.rows.forEach( function (entry) {
         	output += entry.doc[type];
-        	//console.log('out is:\t' + result)// + '\tType is:\t'typeof(result));
-        	//console.log(show(entry.doc[type])+": entry.doc[type] type is : "+ typeof(entry.doc[type]));
+        	console.log(show(output)+": output type is : "+ typeof(output));
+        	console.log(show(entry.doc[type])+": entry.doc[type] type is : "+ typeof(entry.doc[type]));
      	})
-	}).then(function (output) {
+//	}).then(function (output) {
 	//console.log("Final result:\t"+result);
-	return output;
+return output;
 })
 }
 
