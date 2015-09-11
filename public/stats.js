@@ -52,7 +52,7 @@ localDB.sync(remoteDB, {
 
 		result.rows.forEach( function(el){
 		    el.doc.render('layout.jade', { title: 'Testing', el: el });
-		    console.log(docs);
+		    console.log(el);
 
 	});
 
