@@ -40,12 +40,12 @@ localDB.sync(remoteDB, {
 		Data = result;
 		console.log(result);
 	}).then(function (result) {
-		// for (var el in Data.doc) {
-		// 	console.log('el = '+el);
-		// 	Percentage += el.percentage;
-		// };
-		// console.log('Data.total_rows = '+Data.total_rows);
-		// Percentage = Percentage / Data.total_rows;
+		for (var el in Data.rows) {
+			console.log('el = '+el);
+			Percentage += el.doc.percentage;
+		};
+		console.log('Data.total_rows = '+Data.total_rows);
+		Percentage = Percentage / Data.total_rows;
 	});
 
 }).on('complete', function (info) {
