@@ -50,10 +50,6 @@ localDB.sync(remoteDB, {
 		// console.log('Percentage after div'+Percentage);
 		// return Percentage;
 
-		result.rows.forEach( function(el){
-		    el.doc.render('../views/layout.jade', { title: 'Testing', test: el });
-		    console.log(el);
-
 	});
 
 }).on('complete', function (info) {
