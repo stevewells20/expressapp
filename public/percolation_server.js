@@ -1,5 +1,5 @@
 var Percolate = {
-    Percentage: undefined,
+    Percentage: 0,
 
     draw: function(N,perc) {
         var canvas = document.getElementById('animation');
