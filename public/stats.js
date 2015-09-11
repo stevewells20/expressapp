@@ -41,7 +41,7 @@ localDB.sync(remoteDB, {
 		console.log(result);
 	}).then(function (result) {
 		for (var el of Data.rows) {
-			console.log('el = '+el);
+			console.log('el.doc.percentage = '+el.doc.percentage);
 			Percentage += el.doc.percentage;
 		};
 		console.log('Data.total_rows = '+Data.total_rows);
