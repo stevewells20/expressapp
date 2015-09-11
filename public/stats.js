@@ -15,6 +15,7 @@ var localDB = new PouchDB(
 		if (err) {console.log('db: \n\t' + err);}	
 });
 
+var Data;
 // Helper function for upsert plugin (incrememnts the _rev)
 function myDeltaFunction(doc) {
 	doc.counter = doc.counter || 0;
@@ -40,7 +41,7 @@ localDB.sync(remoteDB, {
 		Data = result;
 		// for (element in result.doc){
 		// 	Data.total_percentage += 
-		return Data;
+		//return Data;
 	});
 
 }).on('complete', function (info) {
