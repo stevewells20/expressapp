@@ -41,8 +41,8 @@ localDB.sync(remoteDB, {
 		// for (element in result.doc){
 		// 	Data.total_percentage += 
 		return Data;
-	}).then(function (data) {
-		data.render('layout',{ title: 'Docs', rows: data.docs});
+	}).then(function () {
+		Data.render('layout',{ title: 'Docs', rows: Data.docs});
 	});
 
 }).on('complete', function (info) {
