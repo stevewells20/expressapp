@@ -40,14 +40,20 @@ localDB.sync(remoteDB, {
 		Data = result;
 		console.log(result);
 	}).then(function (result) {
-		for (var el of Data.rows) {
-			console.log('el.doc.percentage = '+el.doc.percentage);
-			Percentage += el.doc.percentage;
-		};
-		console.log('Percentage before div'+Percentage);
-		console.log('Data.total_rows = '+Data.total_rows);
-		Percentage = Percentage / Data.total_rows;
-		console.log('Percentage after div'+Percentage);
+		// for (var el of Data.rows) {
+		// 	console.log('el.doc.percentage = '+el.doc.percentage);
+		// 	Percentage += el.doc.percentage;
+		// };
+		// console.log('Percentage before div'+Percentage);
+		// console.log('Data.total_rows = '+Data.total_rows);
+		// Percentage = Percentage / Data.total_rows;
+		// console.log('Percentage after div'+Percentage);
+		// return Percentage;
+
+		result.rows.forEach( function(el){
+		    el.doc.render('layout.jade', { title: 'Testing', el: el });
+		    console.log(docs);
+
 	});
 
 }).on('complete', function (info) {
