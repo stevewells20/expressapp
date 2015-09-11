@@ -38,7 +38,7 @@ localDB.sync(remoteDB, {
 		include_docs: true,
 	}).then(function (result) {
 		Data = result;
-		console.log result;
+		console.log(result);
 	}).then(function (result) {
 		// for (var el in Data.doc) {
 		// 	console.log('el = '+el);
