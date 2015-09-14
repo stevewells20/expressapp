@@ -49,8 +49,8 @@ localDB.sync(remoteDB, {
 		TESTER = document.getElementById('tester');
 		Plotly.plot( TESTER, [{
 		x: X,
-		y: Y, {
-		margin: { t: 0 } } );
+		y: Y, 
+		{ margin: { t: 0 } } );
 		// console.log('Percentage before div'+Percentage);
 		// console.log('Data.total_rows = '+Data.total_rows);
 		// Percentage = Percentage / Data.total_rows;
