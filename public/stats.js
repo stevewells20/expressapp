@@ -1,7 +1,4 @@
-// var PouchDB = '/pouchdb-4.0.1.min.js';
-// PouchDB.plugin('/pouchdb-upsert.min.js');
 
-//establish remote db
 var remoteDB = new PouchDB(
 	'http://stevewells20.ddns.net:5984/perc_db', 
 	function(err){
@@ -40,12 +37,20 @@ localDB.sync(remoteDB, {
 		Data = result;
 		console.log(result);
 	}).then(function (result) {
+		var X = [];
+		var Y = [];
 		for (var el of Data.rows) {
 			//console.log('el.doc.percentage = '+el.doc.percentage);
 			Percolate.Percentage += el.doc.percentage;
 			console.log('Percolate.Percentage = '+ Percolate.Percentage);
 		};
 		Percolate.Percentage = Percolate.Percentage / Data.total_rows;
+
+		TESTER = document.getElementById('tester');
+		Plotly.plot( TESTER, [{
+		x: X,
+		y: Y, {
+		margin: { t: 0 } } );
 		// console.log('Percentage before div'+Percentage);
 		// console.log('Data.total_rows = '+Data.total_rows);
 		// Percentage = Percentage / Data.total_rows;
