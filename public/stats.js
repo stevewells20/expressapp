@@ -43,7 +43,7 @@ localDB.sync(remoteDB, {
 		//var X = Array.apply(null, Array( Object.keys(Data.rows).length )).map(function (_, i) {return i;});
 		var X = Array.apply(null, Array(100)).map(function (_, i) {return i;});
 
-		console.log("!!! CURRENT: \n"+Y);
+		console.log("!!! CURRENT: \n"+X);
 		for (var el of Data.rows) {
 			Percolate.Percentage += el.doc.percentage;
 			//console.log('Percolate.Percentage = '+ Percolate.Percentage);
