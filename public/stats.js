@@ -27,8 +27,8 @@ function show(obj){
 
 // Set live sync between dbs
 localDB.sync(remoteDB, {
-  live: true,
-  retry: true, //Keep retrying until connection reestablished
+	live: true,
+	retry: true, //Keep retrying until connection reestablished
 }).on('change', function (change) {
 	console.log('Change occurred, N-SYNC is harmonizing:\n\t'+show(change));
 	localDB.allDocs({
@@ -40,22 +40,18 @@ localDB.sync(remoteDB, {
 		var X = [];
 		var Y = [];
 		for (var el of Data.rows) {
-			//console.log('el.doc.percentage = '+el.doc.percentage);
 			Percolate.Percentage += el.doc.percentage;
 			console.log('Percolate.Percentage = '+ Percolate.Percentage);
+			X += el.doc.percentage;
 		};
 		Percolate.Percentage = Percolate.Percentage / Data.total_rows;
 
 		TESTER = document.getElementById('tester');
 		Plotly.plot( TESTER, [{
 		x: X,
-		y: Y, 
-		{ margin: { t: 0 } } );
-		// console.log('Percentage before div'+Percentage);
-		// console.log('Data.total_rows = '+Data.total_rows);
-		// Percentage = Percentage / Data.total_rows;
-		// console.log('Percentage after div'+Percentage);
-		// return Percentage;
+		type: 'histogram', }], {
+		margin: { t: 0 } } );
+
 
 	});
 
