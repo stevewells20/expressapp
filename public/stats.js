@@ -38,7 +38,7 @@ localDB.sync(remoteDB, {
 		console.log(result);
 	}).then(function (result) {
 		var X = [];
-		var Y = [];
+		var Y = new Array( Object.keys(Data.rows).length );
 		for (var el of Data.rows) {
 			Percolate.Percentage += el.doc.percentage;
 			console.log('Percolate.Percentage = '+ Percolate.Percentage);
@@ -50,6 +50,8 @@ localDB.sync(remoteDB, {
 		var data = [
 			{
 			x: X,
+			y: Y,
+			style: 'scatter',
 			}
 		];
 
