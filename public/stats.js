@@ -54,7 +54,8 @@ localDB.sync(remoteDB, {
 			type: 'scatter',
 			}
 		];
-
+		console.log(X);
+		console.log(Y);
 		Plotly.newPlot( TESTER, data );
 
 
