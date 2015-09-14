@@ -39,6 +39,7 @@ localDB.sync(remoteDB, {
 	}).then(function (result) {
 		var X = [];
 		var Y = new Array( Object.keys(Data.rows).length );
+		console.log("!!! CURRENT: \n"+Y);
 		for (var el of Data.rows) {
 			Percolate.Percentage += el.doc.percentage;
 			//console.log('Percolate.Percentage = '+ Percolate.Percentage);
@@ -54,8 +55,8 @@ localDB.sync(remoteDB, {
 			type: 'scatter',
 			}
 		];
-		console.log(X);
-		console.log(Y);
+		//console.log(X);
+		//console.log(Y);
 		Plotly.newPlot( TESTER, data );
 
 
