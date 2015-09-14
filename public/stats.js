@@ -40,7 +40,8 @@ localDB.sync(remoteDB, {
 		var Y = [];
 		//var Y = new Array( Object.keys(Data.rows).length );
 		
-		var X = Array.apply(null, Array( Object.keys(Data.rows).length )).map(function (_, i) {return i;});
+		//var X = Array.apply(null, Array( Object.keys(Data.rows).length )).map(function (_, i) {return i;});
+		var x = [for (i of Array(100).keys()) i];
 
 		console.log("!!! CURRENT: \n"+Y);
 		for (var el of Data.rows) {
