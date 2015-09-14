@@ -47,12 +47,14 @@ localDB.sync(remoteDB, {
 		Percolate.Percentage = Percolate.Percentage / Data.total_rows;
 
 		var TESTER = document.getElementById('tester');
-		var data = {
+		var data = [
+			{
 			x: X,
 			type: 'histogram', 
-		};
+			}
+		];
 
-		Plotly.plot( TESTER, data );
+		Plotly.newPlot( TESTER, data );
 
 
 	});
