@@ -50,7 +50,6 @@ localDB.sync(remoteDB, {
 		var data = [
 			{
 			x: X,
-			type: 'histogram', 
 			}
 		];
 
