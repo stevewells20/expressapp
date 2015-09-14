@@ -56,7 +56,7 @@ localDB.sync(remoteDB, {
 			{
 			x: X,
 			y: Y,
-			type: 'scatter',
+			type: 'bar',
 			}
 		];
 		//console.log(X);
