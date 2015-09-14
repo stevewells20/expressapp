@@ -37,16 +37,16 @@ localDB.sync(remoteDB, {
 		Data = result;
 		console.log(result);
 	}).then(function (result) {
-		var X = [];
+		var Y = [];
 		//var Y = new Array( Object.keys(Data.rows).length );
 		
-		var Y = Array.apply(null, Array( Object.keys(Data.rows).length )).map(function (_, i) {return i;});
+		var X = Array.apply(null, Array( Object.keys(Data.rows).length )).map(function (_, i) {return i;});
 
 		console.log("!!! CURRENT: \n"+Y);
 		for (var el of Data.rows) {
 			Percolate.Percentage += el.doc.percentage;
 			//console.log('Percolate.Percentage = '+ Percolate.Percentage);
-			X.push(el.doc.percentage);
+			Y.push(el.doc.percentage);
 		};
 		Percolate.Percentage = Percolate.Percentage / Data.total_rows;
 
